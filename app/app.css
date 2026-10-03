@@ -22,3 +22,6 @@ time { color: #777; font-size: 0.8rem; }
 .reactions { color: #555; font-size: 0.85rem; }
 .composer textarea { width: 100%; box-sizing: border-box; }
 @media (max-width: 40rem) { .chat { grid-template-columns: 1fr; } }
+.tree, .tree ul { list-style: none; padding-left: 1.2rem; }
+.tree li { margin: 0.25rem 0; }
+.gate { color: #8a1c1c; font-weight: 600; }
