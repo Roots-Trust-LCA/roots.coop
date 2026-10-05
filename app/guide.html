@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Mycelium: sign in and act on a story</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./app.css">
+</head>
+<body>
+<!-- Plan 6 batch P6-14, milestone M1, the H-LAM/T Training row of plan 6 section 2. Written by the
+     Technical Writer in ASD-STE100 style, with the words of team/WORDS.md. Provenance: agent.
+     test/guide.test.ts checks every sentence (20 words or fewer) and every quoted word of the app;
+     e2e/person.e2e.ts checks each section marked data-e2e="person" against the screens it drives. -->
+<main id="guide">
+<h1>Sign in and act on a story</h1>
+<p class="note" data-testid="guide-provenance">An agent wrote this guide. It is a draft. A person adopts it.</p>
+<p>This guide tells you how to sign in, find a story, claim it, and close it.</p>
+<p><a href="./">Go back to the app</a></p>
+
+<nav aria-label="Parts of this guide">
+<ol>
+<li><a href="#passkey">Sign in with a passkey</a></li>
+<li><a href="#remote">Sign in with a remote signer</a></li>
+<li><a href="#find">Find a story</a></li>
+<li><a href="#claim">Claim a story</a></li>
+<li><a href="#proof">Post a proof</a></li>
+<li><a href="#review">Wait for the review</a></li>
+<li><a href="#done">Close a person-only story</a></li>
+</ol>
+</nav>
+
+<section id="passkey" data-e2e="person" aria-labelledby="passkey-h">
+<h2 id="passkey-h">1. Sign in with a passkey</h2>
+<p>Use this way if you joined in this browser with a passkey.</p>
+<ol>
+<li>Open roots.coop/app in the browser where you joined.</li>
+<li>The app shows <q>Welcome back</q> and your name.</li>
+<li>Push <q>Sign in with passkey</q>.</li>
+<li>Your device asks for your face, your fingerprint or your screen lock. Give it.</li>
+<li>The app shows <q>Signed in as</q> and your name.</li>
+</ol>
+<p class="note">A passkey opens only the account that this browser keeps. If your key is not in this browser, use part 2.</p>
+</section>
+
+<section id="remote" data-e2e="none" aria-labelledby="remote-h">
+<h2 id="remote-h">2. Sign in with a remote signer</h2>
+<p>Use this way if a remote signer app (NIP-46) holds your key. The steward signs in on the phone this way.</p>
+<ol>
+<li>Open your remote signer app. Copy its connection address. The address starts with <code>bunker://</code>.</li>
+<li>Open roots.coop/app.</li>
+<li>Push <q>Other ways to sign in</q>.</li>
+<li>Paste the address into the field that shows <code>bunker://...</code>.</li>
+<li>Push <q>Connect a remote signer (NIP-46)</q>.</li>
+<li>The app shows <q>Waiting for the remote signer to approve...</q>. Approve the connection in your signer app.</li>
+<li>The app shows <q>Signed in as</q> and the start of your key.</li>
+</ol>
+<p class="note">Your signer app may ask you to approve each event. Approve only the event that the app showed you.</p>
+<p class="note">Never type your secret key into this app. Do not send the connection address to another person.</p>
+<p class="note">No automatic test signs in this way. A person checks it on a phone.</p>
+</section>
+
+<section id="find" data-e2e="person" aria-labelledby="find-h">
+<h2 id="find-h">3. Find a story</h2>
+<ol>
+<li>Push the tab <q>Coordination</q>.</li>
+<li>The board shows one column for each state of a story.</li>
+<li>Find the column <q>Ready</q>. A ready story waits for a claim.</li>
+<li>To see fewer stories, use <q>Show the stories of</q> and choose a team.</li>
+<li>Each card shows the id, the name and the state of a story. A card can also show <q>Gate: person only</q>.</li>
+<li>The app shows <q>Claim this story</q> only on a ready story under a function that you hold.</li>
+</ol>
+</section>
+
+<section id="claim" data-e2e="person" aria-labelledby="claim-h">
+<h2 id="claim-h">4. Claim a story</h2>
+<ol>
+<li>Push <q>Claim this story</q> on the card.</li>
+<li>A dialog shows each line of the event before you sign it. Read the lines.</li>
+<li>To stop, push <q>Cancel</q>. The app signs nothing.</li>
+<li>To sign, push <q>Sign and send</q>.</li>
+<li>The card moves to the column <q>Claimed</q>. The card shows <q>Claimed by</q> and your name.</li>
+</ol>
+<p>You hold one open claim at a time. The app offers no other claim until this claim closes.</p>
+<p data-e2e="none">To release a claim, push <q>Release my claim</q>. Type the reason in <q>Reason</q>. Then push <q>Sign and send</q>.</p>
+</section>
+
+<section id="proof" data-e2e="person" aria-labelledby="proof-h">
+<h2 id="proof-h">5. Post a proof</h2>
+<p>A proof names a file of your work in the corp-agi repository. Put the file there first.</p>
+<ol>
+<li>Push <q>Post a proof</q> on the card in the column <q>Claimed</q>.</li>
+<li>The dialog tells you what the proof answers. For a first proof, it shows <q>This proof answers the claim.</q></li>
+<li>The option <q>In the corp-agi repository</q> is selected. Keep it.</li>
+<li>In <q>File path in corp-agi</q>, type the path of the file. An example is notes/plan-6/D-01.3.md.</li>
+<li>In <q>The file</q>, choose the same file. The browser calculates its sha256. The file stays on your device.</li>
+<li>If the file is not on this device, open <q>Type the sha256 instead</q>. Type the sha256 of the file.</li>
+<li>In <q>Review by the function</q>, choose the function that reviews the proof.</li>
+<li>Push <q>Sign and send</q>.</li>
+<li>The card moves to the column <q>In review</q>.</li>
+</ol>
+<p>If a field is not correct, the app signs nothing. It shows <q>Correct</q> and the number of fields. Correct them, then push <q>Sign and send</q> again.</p>
+</section>
+
+<section id="review" data-e2e="person" aria-labelledby="review-h">
+<h2 id="review-h">6. Wait for the review</h2>
+<p>An agent reads your proof and signs a review. The agent does this outside the app.</p>
+<ul>
+<li>If the review passes on a person-only story, the card moves to the column <q>Done, waits for a person</q>.</li>
+<li>If the review fails, the card goes back to <q>Claimed</q>. The dialog of your next proof shows the defects.</li>
+<li>An agent never closes a person-only story. The history of the card shows the done of an agent as <q>Not accepted</q>.</li>
+</ul>
+</section>
+
+<section id="done" data-e2e="person" aria-labelledby="done-h">
+<h2 id="done-h">7. Close a person-only story</h2>
+<p>Only the custodian of the program signs this done.</p>
+<ol>
+<li>Find the card in the column <q>Done, waits for a person</q>.</li>
+<li>Push <q>Sign the done</q>.</li>
+<li>The dialog shows each line of the event. Read the lines.</li>
+<li>Push <q>Sign and send</q>.</li>
+<li>The card moves to the column <q>Done</q>. It shows <q>Done, signed by</q>, your name and <q>[steward]</q>.</li>
+</ol>
+<p>The app offers a control. The lifecycle rules decide what a signed event does. The board shows the result.</p>
+</section>
+</main>
+</body>
+</html>
