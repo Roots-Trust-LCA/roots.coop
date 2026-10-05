@@ -2,7 +2,7 @@ body { font: 15px/1.45 system-ui, sans-serif; margin: 0 auto; max-width: 64rem; 
 h1 { font-size: 1.2rem; margin: 1rem 0 0.5rem; }
 h2 { font-size: 1.05rem; margin: 0 0 0.5rem; }
 button { font: inherit; padding: 0.3rem 0.7rem; margin: 0.2rem 0.3rem 0.2rem 0; cursor: pointer; }
-button.quiet { background: none; border: 1px solid #ccc; padding: 0.1rem 0.5rem; }
+button.quiet { background: none; border: 1px solid #6b6b6b; padding: 0.1rem 0.5rem; }
 button[disabled] { cursor: not-allowed; opacity: 0.55; }
 input, textarea { font: inherit; padding: 0.3rem; }
 #signin > div { margin: 0.6rem 0; }
@@ -17,7 +17,7 @@ input, textarea { font: inherit; padding: 0.3rem; }
 .thread { margin-left: 1.5rem; border-left: 2px solid #ddd; padding-left: 0.6rem; }
 .messages li { margin: 0.5rem 0; }
 .who { font-weight: 600; }
-time { color: #777; font-size: 0.8rem; }
+time { color: #6b6b6b; font-size: 0.8rem; }
 .text { white-space: pre-wrap; overflow-wrap: anywhere; }
 .reactions { color: #555; font-size: 0.85rem; }
 .composer textarea { width: 100%; box-sizing: border-box; }
@@ -25,3 +25,30 @@ time { color: #777; font-size: 0.8rem; }
 .tree, .tree ul { list-style: none; padding-left: 1.2rem; }
 .tree li { margin: 0.25rem 0; }
 .gate { color: #8a1c1c; font-weight: 600; }
+/* P6-6: the board, the structure view and the proof, as notes/plan-6/views-spec.md section 4 gives
+   them. Each colour pair has its contrast ratio there: #1b1b1b on #ffffff 17.22:1, #555555 7.46:1,
+   #8a1c1c 9.28:1, #6b6b6b 5.33:1, focus #1a4fd6 6.7:1. */
+h3 { font-size: 1rem; margin: 0.25rem 0 0.5rem; }
+h3.inline { display: inline; font-size: 1rem; margin: 0; }
+h4 { font-size: 0.95rem; margin: 0.25rem 0; }
+a { color: #1a4fd6; }
+a, button, select, summary { min-height: 1.5rem; min-width: 1.5rem; }
+li > a, p > a:only-child { display: inline-block; min-height: 1.5rem; line-height: 1.5rem; }
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid #1a4fd6; outline-offset: 2px; }
+select { font: inherit; padding: 0.2rem 0.5rem; border: 1px solid #6b6b6b; background: #ffffff; color: #1b1b1b; }
+summary { cursor: pointer; }
+.filter { margin: 0.5rem 0; }
+.jump ul { list-style: none; padding: 0; margin: 0.25rem 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; }
+.board { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-start; }
+.column { flex: 1 1 14rem; min-width: 0; border: 1px solid #6b6b6b; padding: 0.25rem 0.5rem; }
+.column.person { border-left: 6px solid #8a1c1c; }
+.cards { list-style: none; padding: 0; margin: 0; }
+.card { border-top: 1px solid #6b6b6b; padding: 0.4rem 0; overflow-wrap: anywhere; }
+.card p { margin: 0.2rem 0; }
+.card[hidden] { display: none; }
+.state { font-weight: 600; }
+.history ol { padding-left: 1.2rem; margin: 0.25rem 0; }
+.tree li { overflow-wrap: anywhere; }
+.proof-region { border: 1px solid #6b6b6b; padding: 0.5rem; margin: 0.5rem 0 1rem; overflow-wrap: anywhere; }
+.proof-text { max-height: 12rem; overflow: auto; border: 1px solid #6b6b6b; padding: 0.5rem; white-space: pre-wrap; background: #ffffff; }
+@media (max-width: 40rem) { .board { display: block; } .column { margin-bottom: 0.75rem; } }
