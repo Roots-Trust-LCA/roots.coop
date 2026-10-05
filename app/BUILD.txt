@@ -1,2 +1,2 @@
-Built from app/web in the corp-agi repository at commit d021829b27a04b6b7f4c41510f157fedf08d5d45 (plan 5a batch P6-6).
+Built from app/web in the corp-agi repository at commit bcd6bd37ff1c15b07be020133c726fe199ff91fb (plan 5a batch P6-13).
 Source of record for this directory: that build. Edit there, not here.
